@@ -2,7 +2,7 @@
   "name": "jakala-project",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://sebas-sv.github.io/jakala-project",
+  "homepage": "https://sebas-sv.github.io/jakala-project/#",
   "type": "module",
   "scripts": {
     "start": "vite",
