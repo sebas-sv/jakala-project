@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getProduct } from "../helpers/getProduct";
+import { getProducts } from "../helpers/getProducts";
 
 export const useFetchProduct = (id) => {
 
@@ -7,7 +7,7 @@ export const useFetchProduct = (id) => {
     const [isLoading, setIsLoading] = useState(true)
 
     const getDataProduct = async () => {
-        const newProduct = await getProduct(id);
+        const newProduct = await getProducts(id);
         setProduct(newProduct);
         setIsLoading(false)
     }
