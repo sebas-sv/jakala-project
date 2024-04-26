@@ -2,7 +2,7 @@ import Image from "./Image";
 const Item = ({ name, binomialName, price, imgUrl }) => {
     return (
         <div className="rounded overflow-hidden shadow-lg ">
-            <Image name={name} imgUrl={imgUrl} />
+            <Image name={name} imgUrl={imgUrl} className="w-full h-48 object-cover" />
             <div className="px-6 py-4">
                 <div className="font-bold text-xl mb-1">{name}</div>
                 <div className="font-bold text-xs mb-2">{binomialName}</div>

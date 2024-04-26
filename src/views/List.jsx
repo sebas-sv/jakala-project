@@ -1,12 +1,14 @@
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+
+import { useFetchProducts } from "../hooks/useFetchProducts";
+
 import Spinner from "../components/Spinner";
 import Item from "../components/Item";
 import Search from "../components/Search";
-import { useFetchProducts } from "../hooks/useFetchProducts";
-import { Link } from 'react-router-dom';
-import { useState, useEffect } from 'react';
 
-const List = ({ id }) => {
-    const { products, isLoading } = useFetchProducts(id);
+const List = () => {
+    const { products, isLoading } = useFetchProducts();
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     useEffect(() => {
@@ -19,15 +21,17 @@ const List = ({ id }) => {
                 <Spinner />
             ) : (
                 <>
-                    <div className="md:grid  mt-6  pl-16 pr-16 md:pl-32 md:pr-32">
+                    <div className="px-16 pt-8 md:grid md:grid-cols-4 md:px-32 md:gap-8 md:pt-8">
                         <Search products={products} setFilteredProducts={setFilteredProducts} />
                     </div>
                     <div>
                         {
-                            filteredProducts.length === 0 && <p className="pl-16 pt-8">No se encontraron productos.</p>
+                            filteredProducts.length === 0
+                            &&
+                            <p className="p-16 text-center text-xl font-bold text-red-600">No se encontraron productos.</p>
                         }
                     </div>
-                    <div className="grid auto-rows-fr sm:grid-cols-3 md:grid-cols-4 gap-8 sm:pt-16 pt-8 pl-16 pr-16 md:pl-32 md:pr-32 content-center">
+                    <div className="grid content-center gap-2 pt-8 px-16 sm:grid-cols-3 sm:pt-16 sm:gap-4 md:grid-cols-4 md:px-32 md:gap-8">
                         {
                             filteredProducts.map((product) => (
                                 <Link to={`/detail/${product.id}`} key={product.id}>

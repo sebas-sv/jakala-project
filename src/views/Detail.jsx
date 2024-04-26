@@ -1,11 +1,12 @@
+import { Link, useParams } from 'react-router-dom';
+
+import { useFetchProduct } from "../hooks/useFetchProduct"
+
 import Spinner from "../components/Spinner"
 import Image from "../components/Image"
 import Breadcrumb from "../components/Breadcrumb"
 import Description from "../components/Description"
-import { useFetchProduct } from "../hooks/useFetchProduct"
-import { useParams } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
 
 const Detail = () => {
     const { id } = useParams();
@@ -17,44 +18,23 @@ const Detail = () => {
                 <Spinner />
             ) : (
                 <>
-                    {/* <div className="grid gap-6 mt-8 grid-cols-4 pl-16 pr-16 content-end">
+                    <div className="grid grid-cols-2 px-16 my-8 md:px-32">
                         <Breadcrumb {...product} />
-                    </div>
-                    <div className="grid grid-rows-3 grid-flow-col gap-4 auto-rows-fr gap-8 pl-32 pr-32 pt-16">
-                        <div className="row-span-3">
-                            <Image {...product} noCut={true} />
-                        </div>
-                        <div className="col-start-3">
+                        <div className="">
                             <Link to={`/`}>
-                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
+                                <button className="float-right text-blue-700 font-semibold hover:bg-blue-500 hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
                                     Atrás
                                 </button>
                             </Link>
                         </div>
-                        <div className="row-span-2 col-span-2">
+                    </div>
+
+                    <div className="grid mb-16 md:grid-cols-4 md:items-center">
+                        <div className="justify-self-center md:justify-self-end md:col-start-2">
+                            <Image {...product} className="max-w-72 max-h-72 drop-shadow-md rounded-md" />
+                        </div>
+                        <div className="justify-self-center text-center pt-8 md:justify-self-start md:text-left md:pt-0 md:pl-8">
                             <Description  {...product} />
-                        </div>
-                        </div> */}
-
-                    <div className="grid gap-6 mt-8 grid-cols-4 pl-16 pr-16 md:pl-32 md:pr-32 pr-16 mb-10">
-                        <Breadcrumb {...product} />
-                        <div className="col-start-6">
-                            <Link to={`/`}>
-                                <button className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
-                                    Atrás
-                                </button>
-                            </Link>
-                        </div>
-                    </div>
-
-                    <div class="max-w-md mx-auto overflow-hidden md:max-w-2xl mb-16">
-                        <div class="md:flex">
-                            <div class="md:shrink-0">
-                                <Image {...product} noCut={true} />
-                            </div>
-                            <div class="p-8 text-center sm:text-left">
-                                <Description  {...product} />
-                            </div>
                         </div>
                     </div>
                 </>
